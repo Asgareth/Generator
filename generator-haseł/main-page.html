@@ -3,13 +3,12 @@
 
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
 
     <body>
         <title>*GENERATOR HASEŁ*</title>
-        <h1>*GENERATOR HASEŁ*</h1>
+        <h1 id="naglowek">*GENERATOR HASEŁ*</h1>
 
         <label for="dlugosc">Wpisz długość hasła:</label>
         <input type="number" id="dlugosc" value="" min="8" max="32">
@@ -66,10 +65,10 @@
             let haslo = '';
 
             // wprowadzamy rozne typy znakow do odpowiednich grup
-            if (duze) znaki += 'ABCDEFGHIJKLMNOPRSTUVWXYZ';
-            if (male) znaki += 'abcdefghijklmnoprstuvwxyz';
-            if (specjalne) znaki += '`!@#$%^&*()_-+=<>?,./';
-            if (cyfry) znaki += '0123456789';
+            if (duzeLitery) znaki += 'ABCDEFGHIJKLMNOPRSTUVWXYZ';
+            if (maleLitery) znaki += 'abcdefghijklmnoprstuvwxyz';
+            if (znakiSpecjalne) znaki += '`!@#$%^&*()_-+=<>?,./';
+            if (liczby) znaki += '0123456789';
             
 
             // tutaj juz nastepuje generowanie hasla
