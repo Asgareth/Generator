@@ -5,72 +5,77 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
     <title>*GENERATOR HASEŁ*</title>
-    <h1 id="naglowek">*GENERATOR HASEŁ*</h1>
+    <div class="kontener">
+        <div id="nazwa">
+            <h1 id="naglowek" class="new-rocker-regular">*GENERATOR HASEŁ*</h1>
+        </div>
 
-    <label for="dlugosc">Wpisz długość hasła (8-32 znaków):</label>
-    <input type="number" id="dlugosc" value="" min="0" max="32">
+        <div id="parametr1" class="parametry">
+            <label for="dlugosc">Wpisz długość hasła (8-32 znaków):</label>
+            <input type="number" id="dlugosc" value="" min="0" max="32">
+        </div>
 
-    <br></br>
+        <div id="blad1" class="blad"></div>
 
-    <table>
-        <tr>
-            <td>Wybierz co powinno zawierać hasło:</td>
-        </tr>
-        <tr>
-            <td>Duże litery</td>
-            <td><input type="checkbox" name="elementy" id="duze" /></td>
-        </tr>
-        <tr>
-            <td>Małe litery</td>
-            <td><input type="checkbox" name="elementy" id="male" /></td>
-        </tr>
-        <tr>
-            <td>Znaki specjalne</td>
-            <td><input type="checkbox" name="elementy" id="specjalne" /></td>
-        </tr>
-        <tr>
-            <td>Cyfry</td>
-            <td><input type="checkbox" name="elementy" id="cyfry" /></td>
-        </tr>
-    </table>
+        <div id="parametr2" class="parametry">
+            <table>
+                <tr>
+                    <td>Wybierz co powinno zawierać hasło:</td>
+                </tr>
+                <tr>
+                    <td>Duże litery</td>
+                    <td><input type="checkbox" name="elementy" id="duze" /></td>
+                </tr>
+                <tr>
+                    <td>Małe litery</td>
+                    <td><input type="checkbox" name="elementy" id="male" /></td>
+                </tr>
+                <tr>
+                    <td>Znaki specjalne</td>
+                    <td><input type="checkbox" name="elementy" id="specjalne" /></td>
+                </tr>
+                <tr>
+                    <td>Cyfry</td>
+                    <td><input type="checkbox" name="elementy" id="cyfry" /></td>
+                </tr>
+            </table>
+        </div>
 
-    <button id="odznaczenie" onclick="odznacz()">Odznacz wszystkie</button>
-    <button id="zaznaczenie" onclick="zaznacz()">Zaznacz wszystkie</button>
+        <div id="blad2" class="blad"></div>
 
-    <br></br>
+        <div id="przyciski">
+            <button id="zaznaczenie" class="przycisk" onclick="zaznacz()">Zaznacz wszystkie</button>
+            <button id="odznaczenie" class="przycisk" onclick="odznacz()">Odznacz wszystkie</button>
+        </div>
 
-    <button id="start" onclick="generuj()">Generuj hasło</button>
 
-    <h2>Wygenerowane hasło:</h2>
-    <p id="wynik"></p>
+        <div id="generuj">
+            <button id="start" class="przycisk" onclick="generuj()">Generuj hasło</button>
+        </div>
 
-    <button id="kopiowanie" onclick="kopiuj()">Kopiuj hasło do schowka</button>
+        <div id="wygenerowane">
+            <h2>Wygenerowane hasło:</h2>
+        </div>
+
+        <div id="haslo">
+            <p id="wynik"></p>
+        </div>
+
+        <div id="kopiuj">
+        <button id="kopiowanie" class="przycisk" onclick="kopiuj()">Kopiuj hasło do schowka</button>
+        </div>
+
+    </div>
 
     <script type="text/javascript">
-        function odznacz() {
-            const duzeLitery = document.getElementById('duze');
-            const maleLitery = document.getElementById('male');
-            const znakiSpecjalne = document.getElementById('specjalne');
-            const liczby = document.getElementById('cyfry');
-
-            if (duzeLitery.checked == true) {
-                duzeLitery.checked = false
-            }
-            if (maleLitery.checked == true) {
-                maleLitery.checked = false
-            }
-            if (znakiSpecjalne.checked == true) {
-                znakiSpecjalne.checked = false
-            }
-            if (liczby.checked == true) {
-                liczby.checked = false
-            }
-        }
-
         function zaznacz() {
             const duzeLitery = document.getElementById('duze');
             const maleLitery = document.getElementById('male');
@@ -88,6 +93,26 @@
             }
             if (liczby.checked != true) {
                 liczby.checked = true
+            }
+        }
+
+        function odznacz() {
+            const duzeLitery = document.getElementById('duze');
+            const maleLitery = document.getElementById('male');
+            const znakiSpecjalne = document.getElementById('specjalne');
+            const liczby = document.getElementById('cyfry');
+
+            if (duzeLitery.checked == true) {
+                duzeLitery.checked = false
+            }
+            if (maleLitery.checked == true) {
+                maleLitery.checked = false
+            }
+            if (znakiSpecjalne.checked == true) {
+                znakiSpecjalne.checked = false
+            }
+            if (liczby.checked == true) {
+                liczby.checked = false
             }
         }
 
@@ -115,24 +140,24 @@
 
             // jesli nie zostanie zaznaczony zaden z checkboxow zostanie wyswietlony komunikat
             if (mozliweZnaki == '') {
-                alert('Musisz wybrać przynajmniej jedną kategorię znaków');
+                document.getElementById('blad2').innerHTML='Musisz wybrać przynajmniej jedną kategorię znaków!';
                 return;
             }
 
             // jesli nie zostanie wpisana dlugosc hasla zostanie wyswietlony komunikat
             if (dlugosc == '') {
-                alert('Musisz wpisać długość hasła');
+                document.getElementById('blad1').innerHTML='Musisz wpisać długość hasła!!';
                 return;
             }
 
             // tutaj juz nastepuje generowanie hasla
             for (let i = 0; i < dlugosc; i++) {
                 if (dlugosc < 8) {
-                    alert("Minimalna długość generowanego hasła to 8");
+                    document.getElementById('blad1').innerHTML="Minimalna długość generowanego hasła to 8!";
                     break;
                 }
                 else if (dlugosc > 32) {
-                    alert("Maksymalna długość generowanego hasła to 32");
+                    document.getElementById('blad1').innerHTML="Maksymalna długość generowanego hasła to 32!";
                     break;
                 }
                 const losuj = Math.floor(Math.random() * mozliweZnaki.length);

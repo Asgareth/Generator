@@ -1,3 +1,53 @@
+.kontener {
+    background-color: rgb(225, 199, 243);
+    row-gap: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-evenly; */
+    height: 900px;
+    max-height: 1000px;
+    margin: 0;
+}
+
+.new-rocker-regular {
+    font-family: "New Rocker", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+  
 #naglowek {
-    color: blueviolet;
+    font-family: "New Rocker", system-ui;
+    font-size: 70px;
+    color: rgb(82, 9, 150);
+}
+
+#naglowek:hover {
+    color:blueviolet;
+}
+
+.parametry {
+    font-size: 18px;
+}
+
+.przycisk {
+    color: rgb(82, 9, 150); 
+    background-color:lightgray;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.przycisk:hover {
+    background-color: rgb(188, 121, 250);
+}
+
+#wynik {
+    font-size: 20px;
+    background-color: white;
+}
+
+.blad {
+    font-size: 18px;
+    font-style: italic;
+    color:red;
 }
