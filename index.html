@@ -18,17 +18,17 @@
             <h1 id="naglowek" class="new-rocker-regular">*GENERATOR HASEŁ*</h1>
         </div>
 
-        <div id="parametr1" class="parametry">
-            <label for="dlugosc">Wpisz długość hasła (8-32 znaków):</label>
+        <div class="parametry">
+            <label id='parametr1' for="dlugosc">Wpisz długość hasła (8-32 znaków):</label>
             <input type="number" id="dlugosc" value="" min="0" max="32">
         </div>
 
         <div id="blad1" class="blad"></div>
 
-        <div id="parametr2" class="parametry">
+        <div class="parametry">
             <table>
                 <tr>
-                    <td>Wybierz co powinno zawierać hasło:</td>
+                    <td id="parametr2">Wybierz co powinno zawierać hasło:</td>
                 </tr>
                 <tr>
                     <td>Duże litery</td>
@@ -132,17 +132,11 @@
             let mozliweZnaki = '';
             let haslo = '';
 
-            // wprowadzamy rozne odpowiednie typy znakow
+            // wprowadzamy odpowiednie typy znakow, w zaleznosci ktore zostaly wybrane (checkboxy)
             if (duzeLitery) mozliweZnaki += 'ABCDEFGHIJKLMNOPRSTUVWXYZ';
             if (maleLitery) mozliweZnaki += 'abcdefghijklmnoprstuvwxyz';
             if (znakiSpecjalne) mozliweZnaki += '`!@#$%^&*()_-+=<>?,./';
             if (liczby) mozliweZnaki += '0123456789';
-
-            // jesli nie zostanie zaznaczony zaden z checkboxow zostanie wyswietlony komunikat
-            if (mozliweZnaki == '') {
-                document.getElementById('blad2').innerHTML='Musisz wybrać przynajmniej jedną kategorię znaków!';
-                return;
-            }
 
             // jesli nie zostanie wpisana dlugosc hasla zostanie wyswietlony komunikat
             if (dlugosc == '') {
@@ -150,7 +144,13 @@
                 return;
             }
 
-            // tutaj juz nastepuje generowanie hasla
+            // jesli nie zostanie zaznaczony zaden z checkboxow zostanie wyswietlony komunikat
+            if (mozliweZnaki == '') {
+                document.getElementById('blad2').innerHTML='Musisz wybrać przynajmniej jedną kategorię znaków!';
+                return;
+            }          
+
+            // tutaj juz nastepuje generowanie hasla z warunkami
             for (let i = 0; i < dlugosc; i++) {
                 if (dlugosc < 8) {
                     document.getElementById('blad1').innerHTML="Minimalna długość generowanego hasła to 8!";
@@ -160,6 +160,11 @@
                     document.getElementById('blad1').innerHTML="Maksymalna długość generowanego hasła to 32!";
                     break;
                 }
+                
+                // Math.random() - metoda ta generuje losowo liczbę z zakresu od 0 (włącznie) do 1 (bez jedynki). 
+                // Math.floor - ta funkcja zaokrągla liczbę w dół do liczby całkowitej 
+                // W zaleznosci ile checboxow bedzie zaznaczonych tyle bedzie wynosila dlugosc 'mozliweZnaki'
+                // Kod generuje losowy indeks z zakresu dostępnych znaków w 'mozliweZnaki' i dodaje ten znak do zmiennej 'haslo'.
                 const losuj = Math.floor(Math.random() * mozliweZnaki.length);
                 haslo += mozliweZnaki[losuj];
             }

@@ -4,7 +4,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: space-evenly; */
     height: 900px;
     max-height: 1000px;
     margin: 0;
@@ -28,6 +27,7 @@
 
 .parametry {
     font-size: 18px;
+    padding: 10px;
 }
 
 .przycisk {
@@ -50,4 +50,22 @@
     font-size: 18px;
     font-style: italic;
     color:red;
+}
+
+#parametr1 {
+    font-size: 19px;
+    color: black;
+    text-decoration: underline;
+}
+
+#parametr2 {
+    font-size: 19px;
+    color: black;
+    text-decoration: underline;
+}
+
+#wygenerowane {
+    color: black;
+    text-decoration: underline;
+    padding: 10px;
 }
